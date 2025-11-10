@@ -13,12 +13,12 @@ var brush4Alpha = 60;  // 0–255 transparency for soft brush (tool 2)
 var mountainImg, treeImg, tree2Img, birdImg, flowerImg, groundBrushImg;
 
 function preload() {
-  mountainImg    = loadImage('mnt.png');
-  treeImg        = loadImage('tree.png');
-  tree2Img       = loadImage('tree2.png');
-  birdImg        = loadImage('birdbrush.png');
-  flowerImg      = loadImage('flower.png');
-  groundBrushImg = loadImage('brush1.png');
+  mountainImg    = loadImage('https://aizillust.github.io/p5js/mnt.png');
+  treeImg        = loadImage('https://aizillust.github.io/p5js/tree.png');
+  tree2Img       = loadImage('https://aizillust.github.io/p5js/tree2.png');
+  birdImg        = loadImage('https://aizillust.github.io/p5js/birdbrush.png');
+  flowerImg      = loadImage('https://aizillust.github.io/p5js/flower.png');
+  groundBrushImg = loadImage('https://aizillust.github.io/p5js/brush1.png');
 }
 
 function setup() {
