@@ -600,4 +600,88 @@ function draw() {
   vertex(355, 430);
   endShape(CLOSE);
 
+  //ear
+  noStroke();
+  fill(129, 77, 64);
+  beginShape();
+  vertex(403, 259);
+  vertex(416, 252);
+  vertex(416, 267);
+  vertex(411, 259);
+  vertex(403, 259);
+  endShape(CLOSE);
+  
+  //e1
+  noStroke();
+  fill(129, 77, 64);
+  beginShape();
+  vertex(403, 308);
+  vertex(407, 281);
+  vertex(401, 262);
+  vertex(403, 259);
+  vertex(409, 281);
+  vertex(404, 308);
+  vertex(403, 308);
+  endShape(CLOSE);
+  
+  //e2
+  noStroke();
+  fill(129, 77, 64);
+  beginShape();
+  vertex(380, 311);
+  vertex(394, 298);
+  vertex(386, 294);
+  vertex(389, 282);
+  vertex(399, 286);
+  vertex(392, 311);
+  vertex(380, 311);
+  endShape(CLOSE);
+
+  
+  //collar
+  noStroke();
+  fill(176, 179, 179);
+  beginShape();
+  vertex(224, 456);
+  vertex(236, 471);
+  vertex(258, 521);
+  vertex(272, 464);
+  vertex(279, 467);
+  vertex(287, 530);
+  vertex(254, 562);
+  vertex(238, 533);
+  vertex(219, 499);
+  vertex(224, 456);
+  endShape(CLOSE);
+  
+  //c1
+  noStroke();
+  fill(153, 150, 143);
+  beginShape();
+  vertex(224, 456);
+  vertex(242, 444);
+  vertex(260, 438);
+  vertex(264, 476);
+  vertex(255, 515);
+  vertex(237, 478);
+  vertex(224, 456);
+  endShape(CLOSE);
+  
+  //c2
+  noStroke();
+  fill(255);
+  beginShape();
+  vertex(224, 456);
+  vertex(221, 516);
+  vertex(204, 517);
+  vertex(211, 506);
+  vertex(210, 475);
+  vertex(216, 448);
+  vertex(239, 438);
+  vertex(258, 434);
+  vertex(260, 439);
+  vertex(240, 446);
+  vertex(224, 456);
+  endShape(CLOSE);
+
 }
