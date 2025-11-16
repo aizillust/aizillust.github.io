@@ -671,17 +671,95 @@ function draw() {
   noStroke();
   fill(255);
   beginShape();
-  vertex(224, 456);
-  vertex(221, 516);
-  vertex(204, 517);
-  vertex(211, 506);
-  vertex(210, 475);
-  vertex(216, 448);
-  vertex(239, 438);
-  vertex(258, 434);
-  vertex(260, 439);
-  vertex(240, 446);
-  vertex(224, 456);
+  vertex(257, 426);
+  vertex(260, 440);
+  vertex(242, 445);
+  vertex(224, 458);
+  vertex(220, 517);
+  vertex(201, 517);
+  vertex(209, 508);
+  vertex(210, 477);
+  vertex(214, 442);
+  vertex(257, 426);
   endShape(CLOSE);
+
+
+  //c3
+  noStroke();
+  fill(68, 68, 70);
+  beginShape();
+  vertex(393, 379);
+  vertex(420, 388);
+  vertex(429, 419);
+  vertex(432, 437);
+  vertex(428, 441);
+  vertex(406, 394);
+  vertex(394, 403);
+  vertex(393, 379);
+  endShape(CLOSE);
+
+  //c4 
+  noStroke();
+  fill(89, 100, 108);
+  beginShape();
+  vertex(408, 392);
+  vertex(429, 443);
+  vertex(419, 455);
+  vertex(395, 418);
+  vertex(339, 450);
+  vertex(328, 450);
+  vertex(408, 392);
+  endShape(CLOSE);
+
+  //c5
+  noStroke();
+  fill(137, 137, 137);
+  beginShape();
+  vertex(398, 416);
+  vertex(421, 451);
+  vertex(396, 490);
+  vertex(283, 503);
+  vertex(277, 466);
+  vertex(272, 465);
+  vertex(253, 535);
+  vertex(254, 552);
+  vertex(250, 534);
+  vertex(266, 455);
+  vertex(336, 450);
+  vertex(398, 416);
+  endShape(CLOSE);
+
+  //c6
+  noStroke();
+  fill(159, 153, 153);
+  beginShape();
+  vertex(376, 429);
+  vertex(367, 463);
+  vertex(368, 467);
+  vertex(269, 456);
+  vertex(342, 447);
+  vertex(376, 429);
+  endShape(CLOSE);
+
+  //c7
+  noStroke();
+  fill(155, 157, 158);
+  beginShape();
+  vertex(395, 490);
+  vertex(286, 517);
+  vertex(282, 499);
+  vertex(395, 490);
+  endShape(CLOSE);
+
+  //c8
+  noStroke();
+  fill(209, 213, 216);
+  beginShape();
+  vertex(395, 491);
+  vertex(295, 548);
+  vertex(285, 517);
+  vertex(395, 491);
+  endShape(CLOSE);
+
 
 }
