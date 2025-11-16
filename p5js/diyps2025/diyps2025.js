@@ -1,3 +1,4 @@
+//this makes use of absolute urls so you can just copy and paste the entire code too!
 var initials ='jc'; //initials
 var choice = '4';   // starting choice is 4 which is a pen
 var screenbg = 250; // off white background
