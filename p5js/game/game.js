@@ -6,7 +6,7 @@ var score = 0;
 
 // targets positions
 var tx = 300, ty = 300;
-var baseSize = 80;   // increase this if its too small 
+var baseSize = 80;   // updated below per level using canvas-relative sizing
 var tSize = baseSize;
 
 // icon cycling
@@ -22,8 +22,8 @@ var lastMoveMs = 0;
 var moveInterval = 3000; //3 seconds
 
 // ui positions 
-var startBtn = { x: 300, y: 420, w: 400, h: 110 }; // Start Button 
-var arrowBox = { x: 540, y: 20, w: 60, h: 60 };
+var startBtn = { x: 300, y: 420, w: 400, h: 110 }; // Start Button
+var arrowBox = { x: 540, y: 20,  w: 60,  h: 60 };
 
 // images
 var imgCursor;      // custom cursor
@@ -32,11 +32,19 @@ var imgStartBtn;    // "Start" button
 var imgCelebrate;   // celebration bg
 
 // Panels & target icons
-var panelImgs = [];    
-var iconImgs  = [];    
+var panelImgs = [];
+var iconImgs  = [];
 
 // per-level progress
 var perLevelScore = 0;
+
+// sizing that scales with canvas did this bc they got too small
+var CURSOR_PX = 64;   // cursor draw size
+var ICON_L1   = 80;   // level 1 base size
+var ICON_L2   = 70;   // level 2 base size
+var ICON_L3   = 60;   // level 3 base size
+var ICON_MIN2 = 28;   // minimum icon size in L2
+var ICON_MIN3 = 20;   // minimum icon size in L3
 
 //absolute urls
 //add other art and replace some later
@@ -45,11 +53,11 @@ function preload() {
   imgStartBg   = loadImage('https://aizillust.github.io/p5js/game/bg1.jpg');
   imgStartBtn  = loadImage('https://aizillust.github.io/p5js/game/start.png');
   imgCursor    = loadImage('https://aizillust.github.io/p5js/game/cursor.png');
-//panels
+  //panels
   panelImgs[1] = loadImage('https://aizillust.github.io/p5js/game/panel1.jpg');
   panelImgs[2] = loadImage('https://aizillust.github.io/p5js/game/panel2.jpg');
   panelImgs[3] = loadImage('https://aizillust.github.io/p5js/game/panel3.jpg');
-//icons
+  //icons
   iconImgs[0]  = loadImage('https://aizillust.github.io/p5js/game/icon1.png');
   iconImgs[1]  = loadImage('https://aizillust.github.io/p5js/game/icon2.png');
   iconImgs[2]  = loadImage('https://aizillust.github.io/p5js/game/icon3.png');
@@ -61,33 +69,66 @@ function setup() {
   textSize(20);
   noCursor();
 
-  resetTarget();
-  setLevel(1);
+  // ---------- canvas-relative sizing ----------
+  var S = min(width, height);
+
+  // icons scale with canvas size
+  ICON_L1   = round(S * 0.22);  // ~22% of canvas
+  ICON_L2   = round(S * 0.18);
+  ICON_L3   = round(S * 0.15);
+  ICON_MIN2 = round(S * 0.05);
+  ICON_MIN3 = round(S * 0.035);
+
+  // cursor size
+  CURSOR_PX = round(S * 0.12);  //12%
+
+  startBtn = {
+    x: width * 0.5,
+    y: height * 0.72,
+    w: round(width * 0.66),
+    h: round(height * 0.18)
+  };
+
+  arrowBox = {
+    x: width - round(S * 0.12) - 10,
+    y: 10,
+    w: round(S * 0.12),
+    h: round(S * 0.12)
+  };
+
+    resetTarget();
+    setLevel(1);
 }
 
-function draw() {
-  background(220);
+  function draw() {
+    background(220);
+  
+    //game state route
+  function draw() {
+    background(220);
 
   //game state route
-  if (gameState == "START")        drawStartScreen();
-  else if (gameState == "PANEL1")  drawPanel(1);
-  else if (gameState == "L1")      levelOne();
-  else if (gameState == "PANEL2")  drawPanel(2);
-  else if (gameState == "L2")      levelTwo();
-  else if (gameState == "PANEL3")  drawPanel(3);
-  else if (gameState == "L3")      levelThree();
-  else if (gameState == "CELEB")   drawCelebration();
-
-  // HUD hidden on panels part, does not reset
-  var onPanel = (gameState === "PANEL1" || gameState === "PANEL2" || gameState === "PANEL3");
-  if (!onPanel) {
-    fill(0);
-    noStroke();
-    text("Score: " + score, width / 2, 30);
+    if (gameState == "START")        drawStartScreen();
+    else if (gameState == "PANEL1")  drawPanel(1);
+    else if (gameState == "L1")      levelOne();
+    else if (gameState == "PANEL2")  drawPanel(2);
+    else if (gameState == "L2")      levelTwo();
+    else if (gameState == "PANEL3")  drawPanel(3);
+    else if (gameState == "L3")      levelThree();
+    else if (gameState == "CELEB")   drawCelebration();
+  
+    // HUD hidden on panels, start, and celebration screens
+    var onPanel = (gameState === "PANEL1" || gameState === "PANEL2" || gameState === "PANEL3");
+    var hideHUD = (onPanel || gameState === "START" || gameState === "CELEB");
+    if (!hideHUD) {
+      fill(0);
+      noStroke();
+      text("Score: " + score, width / 2, 30);
+    }
+  
+    drawCursor();
   }
 
-  drawCursor();
-}
 
 //imgs draw
 function drawImageCover(img, x, y, w, h) {
@@ -109,7 +150,7 @@ function drawStartScreen() {
   // draw button (no backup rectangle)
   if (imgStartBtn) {
     imageMode(CENTER);
-    image(imgStartBtn, startBtn.x, startBtn.y, startBtn.w, startBtn.h); // larger button
+    image(imgStartBtn, startBtn.x, startBtn.y, startBtn.w, startBtn.h);
     imageMode(CORNER);
   }
 }
@@ -133,7 +174,7 @@ function drawCelebration() {
 
 // Levels
 function levelOne() {
-  baseSize = 80;  // bigger icons
+  baseSize = ICON_L1;  // bigger icons based on canvas
   tSize = baseSize;
 
   // guide
@@ -158,8 +199,8 @@ function levelTwo() {
 
   // shrink every 2 points (this level only)
   var shrinkSteps = floor(perLevelScore / 2);
-  baseSize = 70; // larger base than before
-  tSize = max(28, baseSize - shrinkSteps * 2); // keep a sensible minimum
+  baseSize = ICON_L2;
+  tSize = max(ICON_MIN2, baseSize - shrinkSteps * 2);
 
   drawTarget(iconIndex, tx, ty, tSize);
 
@@ -178,8 +219,8 @@ function levelThree() {
 
   // shrink every point
   var shrinkSteps = perLevelScore;
-  baseSize = 60; // larger start size
-  tSize = max(20, baseSize - shrinkSteps); // gentle shrink with min
+  baseSize = ICON_L3;
+  tSize = max(ICON_MIN3, baseSize - shrinkSteps);
 
   noStroke();
   drawTarget(iconIndex, tx, ty, tSize);
@@ -198,7 +239,7 @@ function drawTarget(styleIndex, x, y, s) {
   var img = iconImgs[styleIndex];
   if (img) {
     imageMode(CENTER);
-    image(img, x, y, s, s); // use larger s values
+    image(img, x, y, s, s);
     imageMode(CORNER);
   }
 }
@@ -219,7 +260,7 @@ function resetTarget() {
 function setLevel(n) {
   perLevelScore = 0;
   iconIndex = 0;
-  baseSize = (n==1)?80:(n==2)?70:60; // updated larger defaults
+  baseSize = (n==1)?ICON_L1:(n==2)?ICON_L2:ICON_L3;
   tSize = baseSize;
 }
 
@@ -246,13 +287,15 @@ function keyPressed() {
   }
 }
 
-// simple triangle 
+// simple triangle
 function drawArrow() {
   noStroke();
   fill(50);
   push();
   translate(arrowBox.x + arrowBox.w/2, arrowBox.y + arrowBox.h/2);
-  triangle(-10, -12, -10, 12, 14, 0);
+  // bigger triangle relative to arrowBox
+  var a = min(arrowBox.w, arrowBox.h) * 0.45;
+  triangle(-a*0.75, -a, -a*0.75, a, a, 0);
   pop();
 }
 
@@ -270,7 +313,7 @@ function insideBox(px, py, box) {
 function drawCursor() {
   if (imgCursor) {
     imageMode(CENTER);
-    image(imgCursor, mouseX, mouseY, 64, 64); //cursor size (increase here)
+    image(imgCursor, mouseX, mouseY, CURSOR_PX, CURSOR_PX); //scaled with canvas
     imageMode(CORNER);
   }
 }
