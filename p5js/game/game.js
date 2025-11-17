@@ -32,8 +32,8 @@ var imgStartBtn;    // "Start" button
 var imgCelebrate;   // celebration bg
 
 // Panels & target icons
-var panelImgs = [];    // [1],[2],[3]
-var iconImgs  = [];    // [0],[1],[2]
+var panelImgs = [];    
+var iconImgs  = [];   
 
 // per-level progress
 var perLevelScore = 0;
@@ -42,16 +42,17 @@ var perLevelScore = 0;
 //add other art and replace some later
 
 function preload() {
-  imgStartBg  = loadImage('https://aizillust.github.io/p5js/game/bg1.jpg');
-  imgStartBtn = loadImage('https://aizillust.github.io/p5js/game/start.jpg');
-  imgCursor   = loadImage('https://aizillust.github.io/p5js/game/cursor.jpg');
+  imgStartBg   = loadImage('https://aizillust.github.io/p5js/game/bg1.jpg');
+  imgStartBtn  = loadImage('https://aizillust.github.io/p5js/game/start.png');
+  imgCursor    = loadImage('https://aizillust.github.io/p5js/game/cursor.png');
+//panels
   panelImgs[1] = loadImage('https://aizillust.github.io/p5js/game/panel1.jpg');
   panelImgs[2] = loadImage('https://aizillust.github.io/p5js/game/panel2.jpg');
   panelImgs[3] = loadImage('https://aizillust.github.io/p5js/game/panel3.jpg');
-  iconImgs[0]  = loadImage('https://aizillust.github.io/p5js/game/icon1.jpg');
-  iconImgs[1]  = loadImage('https://aizillust.github.io/p5js/game/icon2.jpg');
-  iconImgs[2]  = loadImage('https://aizillust.github.io/p5js/game/icon3.jpg');
-
+//icons
+  iconImgs[0]  = loadImage('https://aizillust.github.io/p5js/game/icon1.png');
+  iconImgs[1]  = loadImage('https://aizillust.github.io/p5js/game/icon2.png');
+  iconImgs[2]  = loadImage('https://aizillust.github.io/p5js/game/icon3.png');
 }
 
 function setup() {
@@ -68,27 +69,41 @@ function draw() {
   background(220);
 
   //game state route
-  if (gameState == "START")   drawStartScreen();
-  else if (gameState == "PANEL1") drawPanel(1);
-  else if (gameState == "L1") levelOne();
-  else if (gameState == "PANEL2") drawPanel(2);
-  else if (gameState == "L2") levelTwo();
-  else if (gameState == "PANEL3") drawPanel(3);
-  else if (gameState == "L3") levelThree();
-  else if (gameState == "CELEB") drawCelebration();
+  if (gameState == "START")        drawStartScreen();
+  else if (gameState == "PANEL1")  drawPanel(1);
+  else if (gameState == "L1")      levelOne();
+  else if (gameState == "PANEL2")  drawPanel(2);
+  else if (gameState == "L2")      levelTwo();
+  else if (gameState == "PANEL3")  drawPanel(3);
+  else if (gameState == "L3")      levelThree();
+  else if (gameState == "CELEB")   drawCelebration();
 
-  // HUD
-  fill(0);
-  noStroke();
-  text("Score: " + score, width / 2, 30);
+  var onPanel = (gameState === "PANEL1" || gameState === "PANEL2" || gameState === "PANEL3");
+  if (!onPanel) {
+    fill(0);
+    noStroke();
+    text("Score: " + score, width / 2, 30);
+  }
 
   drawCursor();
 }
 
+//imgs draw
+function drawImageCover(img, x, y, w, h) {
+  var boxW = w, boxH = h;
+  var imgW = img.width, imgH = img.height;
+  var scale = max(boxW / imgW, boxH / imgH); // cover
+  var drawW = imgW * scale;
+  var drawH = imgH * scale;
+  var dx = x + (boxW - drawW) / 2;
+  var dy = y + (boxH - drawH) / 2;
+  image(img, dx, dy, drawW, drawH);
+}
+
 //Screen
 function drawStartScreen() {
-  // draw bg (no backup)
-  if (imgStartBg) image(imgStartBg, 0, 0, width, height);
+  // draw bg (cover, no backup)
+  if (imgStartBg) drawImageCover(imgStartBg, 0, 0, width, height);
 
   // draw button (no backup rectangle)
   if (imgStartBtn) {
@@ -98,19 +113,17 @@ function drawStartScreen() {
   }
 }
 
-  // draw panel image full canvas (no backup color)
-
+// draw panel image full canvas
 function drawPanel(n) {
-
-  if (panelImgs[n]) image(panelImgs[n], 0, 0, width, height);
+  if (panelImgs[n]) drawImageCover(panelImgs[n], 0, 0, width, height);
 
   // draw simple next triangle (clickable area stays the same)
   drawArrow();
 }
 
-  // celebration image make sure to add 
+// celebration image make sure to add later
 function drawCelebration() {
-  if (imgCelebrate) image(imgCelebrate, 0, 0, width, height);
+  if (imgCelebrate) drawImageCover(imgCelebrate, 0, 0, width, height);
 
   textSize(18); fill(50);
   text("Final Score: " + score, width/2, 40);
@@ -187,7 +200,6 @@ function drawTarget(styleIndex, x, y, s) {
     image(img, x, y, s, s);
     imageMode(CORNER);
   }
-  
 }
 
 //scoring
@@ -217,7 +229,6 @@ function mousePressed() {
     gameState = "PANEL1"; setLevel(1); return;
   }
 
-  // panels advance via arrow hitbox
   if (gameState == "PANEL1" || gameState == "PANEL2" || gameState == "PANEL3") {
     if (insideBox(mouseX, mouseY, arrowBox)) {
       if (gameState == "PANEL1") { gameState = "L1"; setLevel(1); }
@@ -234,8 +245,7 @@ function keyPressed() {
   }
 }
 
- // simple triangle 
-  
+// simple triangle 
 function drawArrow() {
   noStroke();
   fill(50);
@@ -255,12 +265,11 @@ function insideBox(px, py, box) {
          py > box.y && py < box.y + box.h;
 }
 
-
 // img cursor
 function drawCursor() {
   if (imgCursor) {
     imageMode(CENTER);
-    image(imgCursor, mouseX, mouseY, 36, 36);
+    image(imgCursor, mouseX, mouseY, 36, 36); // increase to 64 if you want it larger
     imageMode(CORNER);
   }
 }
