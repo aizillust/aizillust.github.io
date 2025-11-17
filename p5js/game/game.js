@@ -6,7 +6,7 @@ var score = 0;
 
 // targets positions
 var tx = 300, ty = 300;
-var baseSize = 80;   // updated below per level using canvas-relative sizing
+var baseSize = 80;   
 var tSize = baseSize;
 
 // icon cycling
@@ -69,18 +69,17 @@ function setup() {
   textSize(20);
   noCursor();
 
-  // ---------- canvas-relative sizing ----------
   var S = min(width, height);
 
   // icons scale with canvas size
-  ICON_L1   = round(S * 0.22);  // ~22% of canvas
+  ICON_L1   = round(S * 0.22);  // 22% scale
   ICON_L2   = round(S * 0.18);
   ICON_L3   = round(S * 0.15);
   ICON_MIN2 = round(S * 0.05);
   ICON_MIN3 = round(S * 0.035);
 
   // cursor size
-  CURSOR_PX = round(S * 0.12);  //12%
+  CURSOR_PX = round(S * 0.12);  //12% scale
 
   startBtn = {
     x: width * 0.5,
@@ -96,39 +95,34 @@ function setup() {
     h: round(S * 0.12)
   };
 
-    resetTarget();
-    setLevel(1);
+  resetTarget();
+  setLevel(1);
 }
 
-  function draw() {
-    background(220);
-  
-    //game state route
-  function draw() {
-    background(220);
+function draw() {
+  background(220);
 
   //game state route
-    if (gameState == "START")        drawStartScreen();
-    else if (gameState == "PANEL1")  drawPanel(1);
-    else if (gameState == "L1")      levelOne();
-    else if (gameState == "PANEL2")  drawPanel(2);
-    else if (gameState == "L2")      levelTwo();
-    else if (gameState == "PANEL3")  drawPanel(3);
-    else if (gameState == "L3")      levelThree();
-    else if (gameState == "CELEB")   drawCelebration();
-  
-    // HUD hidden on panels, start, and celebration screens
-    var onPanel = (gameState === "PANEL1" || gameState === "PANEL2" || gameState === "PANEL3");
-    var hideHUD = (onPanel || gameState === "START" || gameState === "CELEB");
-    if (!hideHUD) {
-      fill(0);
-      noStroke();
-      text("Score: " + score, width / 2, 30);
-    }
-  
-    drawCursor();
+  if (gameState == "START")        drawStartScreen();
+  else if (gameState == "PANEL1")  drawPanel(1);
+  else if (gameState == "L1")      levelOne();
+  else if (gameState == "PANEL2")  drawPanel(2);
+  else if (gameState == "L2")      levelTwo();
+  else if (gameState == "PANEL3")  drawPanel(3);
+  else if (gameState == "L3")      levelThree();
+  else if (gameState == "CELEB")   drawCelebration();
+
+  // HUD hidden on panels, start, and celebration screens
+  var onPanel = (gameState === "PANEL1" || gameState === "PANEL2" || gameState === "PANEL3");
+  var hideHUD = (onPanel || gameState === "START" || gameState === "CELEB");
+  if (!hideHUD) {
+    fill(0);
+    noStroke();
+    text("Score: " + score, width / 2, 30);
   }
 
+  drawCursor();
+}
 
 //imgs draw
 function drawImageCover(img, x, y, w, h) {
