@@ -6,7 +6,7 @@ var score = 0;
 
 // targets positions
 var tx = 300, ty = 300;
-var baseSize = 40;
+var baseSize = 80;   // increase this if its too small 
 var tSize = baseSize;
 
 // icon cycling
@@ -19,10 +19,10 @@ var L3_TARGET = 65;
 
 // lvl 3 timed movement
 var lastMoveMs = 0;
-var moveInterval = 3000;
+var moveInterval = 3000; //3 seconds
 
 // ui positions 
-var startBtn = { x: 300, y: 420, w: 220, h: 60 };
+var startBtn = { x: 300, y: 420, w: 400, h: 110 }; // Start Button 
 var arrowBox = { x: 540, y: 20, w: 60, h: 60 };
 
 // images
@@ -33,7 +33,7 @@ var imgCelebrate;   // celebration bg
 
 // Panels & target icons
 var panelImgs = [];    
-var iconImgs  = [];   
+var iconImgs  = [];    
 
 // per-level progress
 var perLevelScore = 0;
@@ -78,6 +78,7 @@ function draw() {
   else if (gameState == "L3")      levelThree();
   else if (gameState == "CELEB")   drawCelebration();
 
+  // HUD hidden on panels part, does not reset
   var onPanel = (gameState === "PANEL1" || gameState === "PANEL2" || gameState === "PANEL3");
   if (!onPanel) {
     fill(0);
@@ -108,7 +109,7 @@ function drawStartScreen() {
   // draw button (no backup rectangle)
   if (imgStartBtn) {
     imageMode(CENTER);
-    image(imgStartBtn, startBtn.x, startBtn.y, startBtn.w, startBtn.h);
+    image(imgStartBtn, startBtn.x, startBtn.y, startBtn.w, startBtn.h); // larger button
     imageMode(CORNER);
   }
 }
@@ -132,7 +133,7 @@ function drawCelebration() {
 
 // Levels
 function levelOne() {
-  baseSize = 40;
+  baseSize = 80;  // bigger icons
   tSize = baseSize;
 
   // guide
@@ -157,8 +158,8 @@ function levelTwo() {
 
   // shrink every 2 points (this level only)
   var shrinkSteps = floor(perLevelScore / 2);
-  baseSize = 34;
-  tSize = max(14, baseSize - shrinkSteps * 2);
+  baseSize = 70; // larger base than before
+  tSize = max(28, baseSize - shrinkSteps * 2); // keep a sensible minimum
 
   drawTarget(iconIndex, tx, ty, tSize);
 
@@ -177,8 +178,8 @@ function levelThree() {
 
   // shrink every point
   var shrinkSteps = perLevelScore;
-  baseSize = 28;
-  tSize = max(10, baseSize - shrinkSteps);
+  baseSize = 60; // larger start size
+  tSize = max(20, baseSize - shrinkSteps); // gentle shrink with min
 
   noStroke();
   drawTarget(iconIndex, tx, ty, tSize);
@@ -197,7 +198,7 @@ function drawTarget(styleIndex, x, y, s) {
   var img = iconImgs[styleIndex];
   if (img) {
     imageMode(CENTER);
-    image(img, x, y, s, s);
+    image(img, x, y, s, s); // use larger s values
     imageMode(CORNER);
   }
 }
@@ -218,7 +219,7 @@ function resetTarget() {
 function setLevel(n) {
   perLevelScore = 0;
   iconIndex = 0;
-  baseSize = (n==1)?40:(n==2)?34:28;
+  baseSize = (n==1)?80:(n==2)?70:60; // updated larger defaults
   tSize = baseSize;
 }
 
@@ -269,7 +270,7 @@ function insideBox(px, py, box) {
 function drawCursor() {
   if (imgCursor) {
     imageMode(CENTER);
-    image(imgCursor, mouseX, mouseY, 36, 36); // increase to 64 if you want it larger
+    image(imgCursor, mouseX, mouseY, 64, 64); //cursor size (increase here)
     imageMode(CORNER);
   }
 }
