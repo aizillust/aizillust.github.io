@@ -138,10 +138,10 @@ function drawImageCover(img, x, y, w, h) {
 
 //Screen
 function drawStartScreen() {
-  // draw bg (cover, no backup)
+  // draw bg 
   if (imgStartBg) drawImageCover(imgStartBg, 0, 0, width, height);
 
-  // draw button (no backup rectangle)
+  // draw button 
   if (imgStartBtn) {
     imageMode(CENTER);
     image(imgStartBtn, startBtn.x, startBtn.y, startBtn.w, startBtn.h);
@@ -153,7 +153,7 @@ function drawStartScreen() {
 function drawPanel(n) {
   if (panelImgs[n]) drawImageCover(panelImgs[n], 0, 0, width, height);
 
-  // draw simple next triangle (clickable area stays the same)
+  // draw simple next triangle
   drawArrow();
 }
 
