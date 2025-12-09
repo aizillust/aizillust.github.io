@@ -55,16 +55,3 @@ footer ul a { text-transform: uppercase; }
 .footer-icons img { width: 24px; height: 24px; object-fit: contain; display: inline-block; }
 .footer-icons .list-inline-item + .list-inline-item { margin-left: .5rem; }
 
-.zoom-image {
-  display: block;
-}
-
-.zoom-image img {
-  cursor: zoom-in;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.zoom-image img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 .75rem 1.5rem rgba(0, 0, 0, 0.25);
-}
