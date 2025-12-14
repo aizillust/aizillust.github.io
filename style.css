@@ -55,3 +55,9 @@ footer ul a { text-transform: uppercase; }
 .footer-icons img { width: 24px; height: 24px; object-fit: contain; display: inline-block; }
 .footer-icons .list-inline-item + .list-inline-item { margin-left: .5rem; }
 
+.gallery-thumb {
+  width: 100%;
+  height: 260px;          
+  object-fit: cover;  
+  display: block;
+}
