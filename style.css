@@ -2,35 +2,203 @@
   --bg: #ffffff;
   --text: #111;
   --muted: #6c757d;
-  --nav-translucent: rgba(0,0,0,.4);
   --landing-height: 85vh;
   --page-header-height: 50vh;
 }
 
-body, h1,h2,h3,h4,h5,h6, p, .nav-link {
+body, p, .nav-link, li, a, button, input, textarea, label {
   font-family: 'Roboto', sans-serif;
   color: var(--text);
 }
-.navbar-brand {
+h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6, .card-title, .lead {
   font-family: 'Playfair Display', serif;
-  text-transform: uppercase;
-  font-size: 1.25rem;
 }
 small, .text-muted, .muted {
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: var(--muted);
 }
 
 .navbar { position: sticky; top: 0; z-index: 1030; }
-@media (min-width: 992px){ .navbar { position: static; } }
+/* PC: all navbars in normal flow (scroll with page), same as inner pages */
+@media (min-width: 992px) {
+  .navbar {
+    position: static !important;
+  }
+  /*
+    Home: hero uses negative margin to sit under the bar; without position + z-index,
+    the landing paints on top and hides the nav (z-index is ignored on position: static).
+  */
+  .navbar-home {
+    position: relative !important;
+    z-index: 1040;
+  }
+}
 .navbar .nav-link.active { border-bottom: 2px solid currentColor; }
-.navbar-home { background-color: var(--nav-translucent) !important; }
 
-.navbar .dropdown-menu { border-radius: .5rem; }
-.navbar-dark .dropdown-menu { background: rgba(0,0,0,.9); }
-.navbar-dark .dropdown-item { color: #fff; }
-.navbar-dark .dropdown-item:hover { background: rgba(255,255,255,.1); }
-.navbar-light .dropdown-menu { background: #fff; }
+/* Index hero nav: transparent. Mobile = fixed overlay; desktop = static in flow like other pages */
+.navbar-home {
+  background-color: transparent !important;
+  z-index: 1040;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-home {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+/* Desktop: keep hero meeting the bar (overlap) so it still reads as “on” the image */
+@media (min-width: 992px) {
+  .navbar-home + .landing {
+    margin-top: -4.75rem;
+    padding-top: 4.75rem;
+  }
+}
+
+/* Home only: white type (beats global `a` / `.nav-link` body color) */
+.navbar-home .navbar-brand,
+.navbar-home .navbar-nav .nav-link,
+.navbar-home .navbar-nav .dropdown-toggle {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.navbar-home .navbar-nav .nav-link:hover,
+.navbar-home .navbar-nav .nav-link:focus,
+.navbar-home .navbar-nav .dropdown-toggle:hover,
+.navbar-home .navbar-nav .dropdown-toggle:focus {
+  color: #fff !important;
+}
+
+.navbar-home .navbar-nav .nav-link.active {
+  color: #fff !important;
+}
+
+.navbar-home .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Navbar: Roboto, all caps, wide tracking (brand uses Playfair below) */
+.navbar .nav-link,
+.navbar .dropdown-toggle {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  font-size: 0.78rem;
+}
+
+.navbar .navbar-brand {
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav {
+    gap: 0 0.25rem;
+  }
+  .navbar-expand-lg .nav-link,
+  .navbar-expand-lg .dropdown-toggle {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+}
+
+/* Dropdowns: shared shape */
+.navbar .dropdown-menu {
+  margin-top: 0;
+  border: none;
+  border-radius: 0;
+  padding: 0.35rem 0;
+  min-width: 14rem;
+}
+
+.navbar .dropdown-item {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: 0.7rem;
+  font-weight: 400;
+  padding: 0.5rem 1.35rem;
+}
+
+/* Index only: brown panel, white type, right-aligned */
+.navbar-home .dropdown-menu {
+  text-align: right;
+  background-color: #3c3332 !important;
+  box-shadow: 0 0.4rem 1.25rem rgba(0, 0, 0, 0.22);
+}
+
+.navbar-home .dropdown-item {
+  color: #fff !important;
+}
+
+.navbar-home .dropdown-item:hover,
+.navbar-home .dropdown-item:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+.navbar-home .dropdown-item.active,
+.navbar-home .dropdown-item:active {
+  background-color: rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+}
+
+/* Inner pages: white panel to match light navbar */
+.navbar-light .dropdown-menu {
+  text-align: left;
+  background-color: #fff !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.navbar-light .dropdown-item {
+  color: #212529 !important;
+}
+
+.navbar-light .dropdown-item:hover,
+.navbar-light .dropdown-item:focus {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  color: #111 !important;
+}
+
+.navbar-light .dropdown-item.active,
+.navbar-light .dropdown-item:active {
+  background-color: rgba(0, 0, 0, 0.09) !important;
+  color: #111 !important;
+}
+
+/* Home + mobile: dim hero behind open menu; dark panel for link list */
+@media (max-width: 991.98px) {
+  body:has(.navbar-home .navbar-collapse.collapse.show)::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1038;
+    pointer-events: none;
+  }
+
+  /* Same brown as Art 74 / 75 dropdowns (#3c3332) */
+  .navbar-home .navbar-collapse {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem 1rem;
+    border-radius: 0.35rem;
+    background: #3c3332 !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .navbar-home .navbar-collapse.collapsing {
+    background: #3c3332 !important;
+  }
+}
 
 .landing {
   min-height: var(--landing-height);
@@ -39,7 +207,10 @@ small, .text-muted, .muted {
 }
 .landing .overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); }
 .landing .inner { position: relative; z-index: 1; }
-.landing .tagline { text-transform: uppercase; }
+.landing .tagline {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+}
 
 .page-header {
   min-height: var(--page-header-height);
