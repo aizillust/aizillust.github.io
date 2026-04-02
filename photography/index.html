@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photography — John Camacho</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">JOHN</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPhotography">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navPhotography">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="art74blog" role="button" data-bs-toggle="dropdown" aria-expanded="false">Art 74</a>
+            <ul class="dropdown-menu" aria-labelledby="art74blog">
+              <li><a class="dropdown-item" href="../glitchart/index.html">Glitch Art</a></li>
+              <li><a class="dropdown-item" href="../mememash/index.html">Meme Mashup</a></li>
+              <li><a class="dropdown-item" href="../minecraft/index.html">Minecraft</a></li>
+              <li><a class="dropdown-item" href="../3dworks/index.html">3D Works</a></li>
+              <li><a class="dropdown-item" href="../netart/index.html">Net Art</a></li>
+              <li><a class="dropdown-item" href="../p5js/index.html">p5js</a></li>
+              <li><a class="dropdown-item" href="../game/index.html">Interactive Visual Novel</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="art75blog" role="button" data-bs-toggle="dropdown" aria-expanded="false">Art 75</a>
+            <ul class="dropdown-menu" aria-labelledby="art75blog">
+              <li><a class="dropdown-item" href="../short/index.html">Short Video</a></li>
+              <li><a class="dropdown-item" href="../perform/index.html">Video Performance</a></li>
+              <li><a class="dropdown-item" href="../soundsonic/index.html">Sound Art</a></li>
+              <li><a class="dropdown-item" href="../videosound/index.html">Video &amp; Sound Art</a></li>
+              <li><a class="dropdown-item" href="../abstract/index.html">Video Abstraction</a></li>
+              <li><a class="dropdown-item" href="../finalvid/index.html">Multi Channel Video</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="projectsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
+            <ul class="dropdown-menu" aria-labelledby="projectsMenu">
+              <li><a class="dropdown-item" href="../illustration/index.html">Animation &amp; Illustration</a></li>
+              <li><a class="dropdown-item" href="../personal/index.html#projects">Projects</a></li>
+              <li><a class="dropdown-item active" aria-current="page" href="index.html">Photography</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="../about/index.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="../blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header" style="background-image: url('../personal/header.jpg');">
+    <div class="container">
+      <h1 class="display-6 text-white">Photography</h1>
+      <p class="page-header-tagline text-white mb-0">Gallery</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="landscapes" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="h4 mb-3">Landscape</h2>
+
+        <div
+          id="photo-landscapes-strip-root"
+          class="project-strip-carousel"
+          style="--project-strip-h: 260px;"
+          data-start-index="1"
+          aria-label="Landscape carousel"
+        >
+          <div class="project-strip-viewport" role="region" aria-label="Landscape images">
+            <div class="project-strip-track"></div>
+          </div>
+          <div class="project-strip-nav">
+            <button type="button" class="project-strip-prev" aria-label="Previous image">&#8592;</button>
+            <button type="button" class="project-strip-next" aria-label="Next image">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-3 mb-2">
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#photo-landscapes-gallery-collapse"
+            aria-expanded="false"
+            aria-controls="photo-landscapes-gallery-collapse"
+          >
+            Toggle gallery
+          </button>
+        </div>
+        <div id="photo-landscapes-gallery-collapse" class="collapse">
+          <div id="photo-landscapes-gallery-root" class="ill-page-root container-fluid px-2 px-md-3 py-4"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="people" class="py-5 bg-white">
+      <div class="container">
+        <h2 class="h4 mb-3">People</h2>
+
+        <div
+          id="photo-people-strip-root"
+          class="project-strip-carousel"
+          style="--project-strip-h: 290px;"
+          data-start-index="3"
+          aria-label="People carousel"
+        >
+          <div class="project-strip-viewport" role="region" aria-label="People images">
+            <div class="project-strip-track"></div>
+          </div>
+          <div class="project-strip-nav">
+            <button type="button" class="project-strip-prev" aria-label="Previous image">&#8592;</button>
+            <button type="button" class="project-strip-next" aria-label="Next image">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-3 mb-2">
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#photo-people-gallery-collapse"
+            aria-expanded="false"
+            aria-controls="photo-people-gallery-collapse"
+          >
+            Toggle gallery
+          </button>
+        </div>
+        <div id="photo-people-gallery-collapse" class="collapse">
+          <div id="photo-people-gallery-root" class="ill-page-root container-fluid px-2 px-md-3 py-4"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="motorvehicles" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="h4 mb-3">Motor Vehicles</h2>
+
+        <div
+          id="photo-motorvehicles-strip-root"
+          class="project-strip-carousel"
+          style="--project-strip-h: 260px;"
+          data-start-index="1"
+          aria-label="Motor Vehicles carousel"
+        >
+          <div class="project-strip-viewport" role="region" aria-label="Motor Vehicles images">
+            <div class="project-strip-track"></div>
+          </div>
+          <div class="project-strip-nav">
+            <button type="button" class="project-strip-prev" aria-label="Previous image">&#8592;</button>
+            <button type="button" class="project-strip-next" aria-label="Next image">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-3 mb-2">
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#photo-motorvehicles-gallery-collapse"
+            aria-expanded="false"
+            aria-controls="photo-motorvehicles-gallery-collapse"
+          >
+            Toggle gallery
+          </button>
+        </div>
+        <div id="photo-motorvehicles-gallery-collapse" class="collapse">
+          <div id="photo-motorvehicles-gallery-root" class="ill-page-root container-fluid px-2 px-md-3 py-4"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-5 bg-white border-top">
+    <div class="container text-center">
+
+      <ul class="list-inline mb-3 footer-links">
+        <li class="list-inline-item"><a href="../index.html" class="text-decoration-none">HOME</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a href="../about/index.html" class="text-decoration-none">ABOUT</a></li>
+        <li class="list-inline-item">•</li>
+        <li class="list-inline-item"><a href="../blog/index.html" class="text-decoration-none">BLOG</a></li>
+      </ul>
+
+      <ul class="list-inline mb-3 footer-icons">
+        <li class="list-inline-item"><a href="https://x.com/aiz_illust" class="footer-social-native" data-social-native="x" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <img src="../icons/twitter.png" alt="Twitter" loading="lazy">
+        </a></li>
+        <li class="list-inline-item"><a href="https://www.instagram.com/aiz_illust/" class="footer-social-native" data-social-native="instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="../icons/instagram.png" alt="Instagram" loading="lazy">
+        </a></li>
+        <li class="list-inline-item"><a href="https://www.linkedin.com/in/john-camacho-96912229a/" class="footer-social-native" data-social-native="linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img src="../icons/linkedin.png" alt="LinkedIn" loading="lazy">
+        </a></li>
+      </ul>
+
+      <p class="small text-muted mb-0 mt-3"><span aria-hidden="true">&copy;</span> <a href="https://www.instagram.com/aiz_illust/" class="text-decoration-none text-muted" target="_blank" rel="noopener noreferrer">aiz_illust</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="gallery-data.js"></script>
+  <script src="gallery.js" defer></script>
+  <script src="../js/social-footer.js" defer></script>
+</body>
+</html>

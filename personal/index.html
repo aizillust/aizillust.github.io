@@ -6,7 +6,7 @@
      <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;700&family=Funnel+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link href="../style.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -24,7 +24,7 @@
 		  <li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="art74blog" role="button" data-bs-toggle="dropdown" aria-expanded="false">Art 74</a>
 			<ul class="dropdown-menu" aria-labelledby="art74blog">
-			  <li><a class="dropdown-item" href="index.html">Glitch Art</a></li>
+			  <li><a class="dropdown-item" href="../glitchart/index.html">Glitch Art</a></li>
 			  <li><a class="dropdown-item" href="../mememash/index.html">Meme Mashup</a></li>
 			  <li><a class="dropdown-item" href="../minecraft/index.html">Minecraft</a></li>
 			  <li><a class="dropdown-item" href="../3dworks/index.html">3D Works</a></li>
@@ -49,9 +49,9 @@
 		  <li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle active" href="#" id="projectsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
 			<ul class="dropdown-menu" aria-labelledby="projectsMenu">
-			  <li><a class="dropdown-item" href="../illustration/index.html">Illustration</a></li>
-			  <li><a class="dropdown-item" href="index.html#Projects">Projects</a></li>
-			  <li><a class="dropdown-item" href="index.html#animation">Animation</a></li>
+			  <li><a class="dropdown-item" href="../illustration/index.html">Animation &amp; Illustration</a></li>
+			  <li><a class="dropdown-item" href="index.html#projects">Projects</a></li>
+			  <li><a class="dropdown-item" href="../photography/index.html">Photography</a></li>
 			</ul>
 		  </li>
 		  <li class="nav-item"><a class="nav-link" href="../about/index.html">About</a></li>
@@ -64,52 +64,91 @@
   <header class="page-header" style="background-image: url('./header.jpg');">
     <div class="container">
       <h1 class="display-6 text-white">Projects</h1>
-      <p class="page-header-tagline text-white mb-0">Illustration, Projects &amp; Animation</p>
+      <p class="page-header-tagline text-white mb-0">Class &amp; Personal Projects</p>
     </div>
   </header>
 
-  <main>
-	    <section id="Illustration" class="py-5 bg-light">
+  <main id="projects">
+    <section id="project-1" class="py-5 bg-light border-bottom">
       <div class="container">
-        <h2 class="h4 mb-3">Illustration</h2>
-        <div id="ill-preview-root"></div>
-      </div>
-    </section>
-	
-	<section id="Projects" class="py-5 bg-light">
-      <div class="container">
-        <h2 class="h4 mb-3">Projects</h2>
-        <div class="row g-4">
-          <div class="col-12 col-md-6 col-lg-4">
-            <a class="card h-100 text-decoration-none" href="./soundsonic/index.html">
-              <img class="card-img-top project-thumb" src="soundsonic.jpg" alt="null holder">
-              <div class="card-body">
-                <h3 class="h6 card-title mb-1">Album Key Art Comm</h3>
-                <p class="card-text small text-muted mb-0">Honorable Mention & Breakdown</p>
-              </div>
-            </a>
+        <h2 class="h4 mb-3">Project 1</h2>
+        <p class="mb-4 text-muted">Placeholder description. Replace this text with your project statement; add real images under <code class="small">personal/projects/project1/</code>.</p>
+        <!-- Slides: replace data-URI placeholders with e.g. ./projects/project1/01.jpg -->
+        <div class="project-strip-carousel" style="--project-strip-h: 260px;" data-start-index="1">
+          <div class="project-strip-viewport" role="region" aria-label="Project 1 images">
+            <div class="project-strip-track">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E1 · 1%3C/text%3E%3C/svg%3E" alt="" width="280" height="240" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E1 · 2%3C/text%3E%3C/svg%3E" alt="" width="400" height="240" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E1 · 3%3C/text%3E%3C/svg%3E" alt="" width="340" height="240" loading="lazy">
+            </div>
+          </div>
+          <div class="project-strip-nav">
+            <button type="button" class="project-strip-prev" aria-label="Previous image">←</button>
+            <button type="button" class="project-strip-next" aria-label="Next image">→</button>
           </div>
         </div>
       </div>
     </section>
-	
-	<section id="animation" class="py-5 bg-light">
+
+    <section id="project-2" class="py-5 bg-white border-bottom">
       <div class="container">
-        <h2 class="h4 mb-3">Animation</h2>
-        <div class="row g-4">
-          <div class="col-12 col-md-6 col-lg-4">
-            <a class="card h-100 text-decoration-none" href="./soundsonic/index.html">
-              <img class="card-img-top project-thumb" src="soundsonic.jpg" alt="null holder">
-              <div class="card-body">
-                <h3 class="h6 card-title mb-1">PIXIV US College Student Contest</h3>
-                <p class="card-text small text-muted mb-0">Honorable Mention & Breakdown</p>
-              </div>
-            </a>
+        <h2 class="h4 mb-3">Project 2</h2>
+        <p class="mb-4 text-muted">Placeholder description. Images: <code class="small">personal/projects/project2/</code>.</p>
+        <div class="project-strip-carousel" style="--project-strip-h: 260px;" data-start-index="1">
+          <div class="project-strip-viewport" role="region" aria-label="Project 2 images">
+            <div class="project-strip-track">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E2 · 1%3C/text%3E%3C/svg%3E" alt="" width="360" height="240" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E2 · 2%3C/text%3E%3C/svg%3E" alt="" width="300" height="240" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E2 · 3%3C/text%3E%3C/svg%3E" alt="" width="420" height="240" loading="lazy">
+            </div>
+          </div>
+          <div class="project-strip-nav">
+            <button type="button" class="project-strip-prev" aria-label="Previous image">←</button>
+            <button type="button" class="project-strip-next" aria-label="Next image">→</button>
           </div>
         </div>
       </div>
     </section>
-	
+
+    <section id="project-3" class="py-5 bg-light border-bottom">
+      <div class="container">
+        <h2 class="h4 mb-3">Project 3</h2>
+        <p class="mb-4 text-muted">Placeholder description. Images: <code class="small">personal/projects/project3/</code>.</p>
+        <div class="project-strip-carousel" style="--project-strip-h: 260px;" data-start-index="1">
+          <div class="project-strip-viewport" role="region" aria-label="Project 3 images">
+            <div class="project-strip-track">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='380' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E3 · 1%3C/text%3E%3C/svg%3E" alt="" width="380" height="240" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='290' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E3 · 2%3C/text%3E%3C/svg%3E" alt="" width="290" height="240" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='410' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E3 · 3%3C/text%3E%3C/svg%3E" alt="" width="410" height="240" loading="lazy">
+            </div>
+          </div>
+          <div class="project-strip-nav">
+            <button type="button" class="project-strip-prev" aria-label="Previous image">←</button>
+            <button type="button" class="project-strip-next" aria-label="Next image">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project-4" class="py-5 bg-white">
+      <div class="container">
+        <h2 class="h4 mb-3">Project 4</h2>
+        <p class="mb-4 text-muted">Placeholder description. Images: <code class="small">personal/projects/project4/</code>.</p>
+        <div class="project-strip-carousel" style="--project-strip-h: 260px;" data-start-index="1">
+          <div class="project-strip-viewport" role="region" aria-label="Project 4 images">
+            <div class="project-strip-track">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E4 · 1%3C/text%3E%3C/svg%3E" alt="" width="320" height="240" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E4 · 2%3C/text%3E%3C/svg%3E" alt="" width="440" height="240" loading="lazy">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='240'%3E%3Crect fill='%23e9ecef' width='100%25' height='100%25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23868e96' font-size='13' font-family='system-ui,sans-serif'%3E4 · 3%3C/text%3E%3C/svg%3E" alt="" width="350" height="240" loading="lazy">
+            </div>
+          </div>
+          <div class="project-strip-nav">
+            <button type="button" class="project-strip-prev" aria-label="Previous image">←</button>
+            <button type="button" class="project-strip-next" aria-label="Next image">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="py-5 bg-white border-top">
@@ -140,8 +179,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../illustration/gallery-data.js"></script>
-  <script src="../illustration/gallery.js" defer></script>
+  <script src="projects-carousel.js" defer></script>
   <script src="../js/social-footer.js" defer></script>
 </body>
 </html>
