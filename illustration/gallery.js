@@ -21,92 +21,20 @@
     });
   }
 
-  function setupLightbox(root, lb) {
-    const img = lb.querySelector('.ill-lightbox-img');
-    const btnClose = lb.querySelector('.ill-lightbox-close');
-    const btnPrev = lb.querySelector('.ill-lightbox-prev');
-    const btnNext = lb.querySelector('.ill-lightbox-next');
-    let current = 0;
-
-    function normalize(i) {
-      return ((i % items.length) + items.length) % items.length;
-    }
-
-    function render() {
-      const item = items[current];
-      img.src = mediaPath(item.file, false);
-      img.alt = item.alt || '';
-    }
-
-    function open(index) {
-      current = normalize(index);
-      render();
-      lb.hidden = false;
-      lb.setAttribute('aria-hidden', 'false');
-      document.documentElement.classList.add('ill-lightbox-open');
-    }
-
-    function close() {
-      lb.hidden = true;
-      lb.setAttribute('aria-hidden', 'true');
-      document.documentElement.classList.remove('ill-lightbox-open');
-    }
-
-    function step(delta) {
-      current = normalize(current + delta);
-      render();
-    }
-
-    btnClose.addEventListener('click', (e) => {
-      e.stopPropagation();
-      close();
-    });
-    const backdrop = lb.querySelector('.ill-lightbox-backdrop');
-    if (backdrop) {
-      backdrop.addEventListener('click', close);
-    }
-    btnPrev.addEventListener('click', (e) => {
-      e.stopPropagation();
-      step(-1);
-    });
-    btnNext.addEventListener('click', (e) => {
-      e.stopPropagation();
-      step(1);
-    });
-    const frame = lb.querySelector('.ill-lightbox-frame');
-    if (frame) {
-      frame.addEventListener('click', (e) => e.stopPropagation());
-    }
-
-    document.addEventListener('keydown', function onKey(e) {
-      if (lb.hidden) return;
-      if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft') step(-1);
-      if (e.key === 'ArrowRight') step(1);
-    });
-
-    return { open, close };
-  }
-
   function buildFullPage(root) {
     const wrap = document.createElement('div');
     wrap.className = 'ill-masonry';
 
-    const lb = document.createElement('div');
-    lb.className = 'ill-lightbox';
-    lb.hidden = true;
-    lb.setAttribute('aria-hidden', 'true');
-    lb.setAttribute('role', 'dialog');
-    lb.setAttribute('aria-modal', 'true');
-    lb.setAttribute('aria-label', 'Full size illustration');
-    lb.innerHTML =
-      '<div class="ill-lightbox-backdrop" aria-hidden="true"></div>' +
-      '<button type="button" class="ill-lightbox-close" aria-label="Close">&times;</button>' +
-      '<button type="button" class="ill-lightbox-prev" aria-label="Previous image">&#8249;</button>' +
-      '<div class="ill-lightbox-frame"><img class="ill-lightbox-img" src="" alt=""></div>' +
-      '<button type="button" class="ill-lightbox-next" aria-label="Next image">&#8250;</button>';
-
-    const { open } = setupLightbox(root, lb);
+    const lbCtrl = window.IllLightbox.create({
+      ariaLabel: 'Full size illustration',
+      itemsLength: items.length,
+      onRender: ({ imgEl, index }) => {
+        const item = items[index];
+        imgEl.src = mediaPath(item.file, false);
+        imgEl.alt = item.alt || '';
+      },
+    });
+    const { open } = lbCtrl;
 
     items.forEach((item, index) => {
       const btn = document.createElement('button');
@@ -123,7 +51,7 @@
     });
 
     root.appendChild(wrap);
-    root.appendChild(lb);
+    root.appendChild(lbCtrl.lb);
   }
 
   document.addEventListener('DOMContentLoaded', () => {

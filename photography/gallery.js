@@ -59,19 +59,17 @@
 
     for (let n = startIndex; n <= maxIndex; n++) {
       let foundExt = null;
-      for (let ei = 0; ei < exts.length; ei++) {
-        const ext = exts[ei];
+      const checks = exts.map(function (ext) {
         const src = mediaPath(categoryKey, String(n) + "." + ext);
-        // Small speed improvement: check the first ext only if it's jpg.
-        // (But still supports other formats.)
-        // If it exists, we break the ext loop.
-        // eslint-disable-next-line no-await-in-loop
-        const ok = await imageExists(src);
-        if (ok) {
-          foundExt = ext;
-          break;
-        }
-      }
+        return imageExists(src).then(function (ok) {
+          return ok ? ext : null;
+        });
+      });
+
+      const results = await Promise.all(checks);
+      foundExt = results.find(function (x) {
+        return !!x;
+      }) || null;
 
       if (foundExt) {
         items.push({
@@ -88,100 +86,22 @@
     return items;
   }
 
-  function createLightbox(items, categoryKey, lb) {
-    const imgEl = lb.querySelector(".ill-lightbox-img");
-    const btnClose = lb.querySelector(".ill-lightbox-close");
-    const btnPrev = lb.querySelector(".ill-lightbox-prev");
-    const btnNext = lb.querySelector(".ill-lightbox-next");
-
-    let current = 0;
-
-    function normalize(i) {
-      return items.length ? ((i % items.length) + items.length) % items.length : 0;
-    }
-
-    function render() {
-      const item = items[current];
-      imgEl.src = mediaPath(categoryKey, item.file);
-      imgEl.alt = item.alt || "";
-    }
-
-    function open(index) {
-      current = normalize(index);
-      render();
-      lb.hidden = false;
-      lb.setAttribute("aria-hidden", "false");
-      document.documentElement.classList.add("ill-lightbox-open");
-    }
-
-    function close() {
-      lb.hidden = true;
-      lb.setAttribute("aria-hidden", "true");
-      document.documentElement.classList.remove("ill-lightbox-open");
-    }
-
-    function step(delta) {
-      current = normalize(current + delta);
-      render();
-    }
-
-    btnClose.addEventListener("click", (e) => {
-      e.stopPropagation();
-      close();
-    });
-
-    const backdrop = lb.querySelector(".ill-lightbox-backdrop");
-    if (backdrop) {
-      backdrop.addEventListener("click", close);
-    }
-
-    btnPrev.addEventListener("click", (e) => {
-      e.stopPropagation();
-      step(-1);
-    });
-
-    btnNext.addEventListener("click", (e) => {
-      e.stopPropagation();
-      step(1);
-    });
-
-    const frame = lb.querySelector(".ill-lightbox-frame");
-    if (frame) {
-      frame.addEventListener("click", (e) => e.stopPropagation());
-    }
-
-    document.addEventListener("keydown", function onKey(e) {
-      if (lb.hidden) return;
-      if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") step(-1);
-      if (e.key === "ArrowRight") step(1);
-    });
-
-    return { open, close };
-  }
-
   function buildMasonryGallery(root, items, categoryKey) {
     root.innerHTML = "";
     if (!items.length) return null;
 
     const wrap = document.createElement("div");
     wrap.className = "ill-masonry";
-
-    const lb = document.createElement("div");
-    lb.className = "ill-lightbox";
-    lb.hidden = true;
-    lb.setAttribute("aria-hidden", "true");
-    lb.setAttribute("role", "dialog");
-    lb.setAttribute("aria-modal", "true");
-    lb.setAttribute("aria-label", "Full size photograph");
-    lb.innerHTML =
-      '<div class="ill-lightbox-backdrop" aria-hidden="true"></div>' +
-      '<button type="button" class="ill-lightbox-close" aria-label="Close">&times;</button>' +
-      '<button type="button" class="ill-lightbox-prev" aria-label="Previous image">&#8249;</button>' +
-      '<div class="ill-lightbox-frame"><img class="ill-lightbox-img" src="" alt=""></div>' +
-      '<button type="button" class="ill-lightbox-next" aria-label="Next image">&#8250;</button>';
-
-    const { open } = createLightbox(items, categoryKey, lb);
+    const lbCtrl = window.IllLightbox.create({
+      ariaLabel: "Full size photograph",
+      itemsLength: items.length,
+      onRender: function (ctx) {
+        const item = items[ctx.index];
+        ctx.imgEl.src = mediaPath(categoryKey, item.file);
+        ctx.imgEl.alt = item.alt || "";
+      },
+    });
+    const { open } = lbCtrl;
 
     items.forEach((item, index) => {
       const btn = document.createElement("button");
@@ -200,7 +120,7 @@
     });
 
     root.appendChild(wrap);
-    root.appendChild(lb);
+    root.appendChild(lbCtrl.lb);
     return { open };
   }
 

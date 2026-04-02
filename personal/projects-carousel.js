@@ -41,86 +41,6 @@
     return full && full.trim() ? full.trim() : im.src;
   }
 
-  function setupStripLightbox(lb, imgs) {
-    var imgEl = lb.querySelector(".ill-lightbox-img");
-    var btnClose = lb.querySelector(".ill-lightbox-close");
-    var btnPrev = lb.querySelector(".ill-lightbox-prev");
-    var btnNext = lb.querySelector(".ill-lightbox-next");
-    var backdrop = lb.querySelector(".ill-lightbox-backdrop");
-    var frame = lb.querySelector(".ill-lightbox-frame");
-    var current = 0;
-
-    function normalize(i) {
-      var n = imgs.length;
-      if (n === 0) return 0;
-      return ((i % n) + n) % n;
-    }
-
-    function render() {
-      var im = imgs[current];
-      imgEl.src = lightboxSrc(im);
-      imgEl.alt = im.alt || "";
-    }
-
-    function open(index) {
-      current = normalize(index);
-      render();
-      lb.hidden = false;
-      lb.setAttribute("aria-hidden", "false");
-      document.documentElement.classList.add("ill-lightbox-open");
-    }
-
-    function close() {
-      lb.hidden = true;
-      lb.setAttribute("aria-hidden", "true");
-      document.documentElement.classList.remove("ill-lightbox-open");
-    }
-
-    function step(delta) {
-      current = normalize(current + delta);
-      render();
-    }
-
-    btnClose.addEventListener("click", function (e) {
-      e.stopPropagation();
-      close();
-    });
-    if (backdrop) backdrop.addEventListener("click", close);
-    btnPrev.addEventListener("click", function (e) {
-      e.stopPropagation();
-      step(-1);
-    });
-    btnNext.addEventListener("click", function (e) {
-      e.stopPropagation();
-      step(1);
-    });
-    if (frame) {
-      frame.addEventListener("click", function (e) {
-        e.stopPropagation();
-      });
-    }
-
-    document.addEventListener("keydown", function onKey(e) {
-      if (lb.hidden) return;
-      if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") step(-1);
-      if (e.key === "ArrowRight") step(1);
-    });
-
-    imgs.forEach(function (im, index) {
-      im.addEventListener("click", function () {
-        open(index);
-      });
-      im.setAttribute("tabindex", "0");
-      im.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          open(index);
-        }
-      });
-    });
-  }
-
   function initCarousel(root) {
     var viewport = root.querySelector(".project-strip-viewport");
     var track = root.querySelector(".project-strip-track");
@@ -166,21 +86,29 @@
       return Promise.all(pending);
     }
 
-    var lb = document.createElement("div");
-    lb.className = "ill-lightbox";
-    lb.hidden = true;
-    lb.setAttribute("aria-hidden", "true");
-    lb.setAttribute("role", "dialog");
-    lb.setAttribute("aria-modal", "true");
-    lb.setAttribute("aria-label", "Full size image");
-    lb.innerHTML =
-      '<div class="ill-lightbox-backdrop" aria-hidden="true"></div>' +
-      '<button type="button" class="ill-lightbox-close" aria-label="Close">&times;</button>' +
-      '<button type="button" class="ill-lightbox-prev" aria-label="Previous image">&#8249;</button>' +
-      '<div class="ill-lightbox-frame"><img class="ill-lightbox-img" src="" alt=""></div>' +
-      '<button type="button" class="ill-lightbox-next" aria-label="Next image">&#8250;</button>';
-    root.appendChild(lb);
-    setupStripLightbox(lb, imgs);
+    // Shared lightbox: click a thumbnail to open, and use prev/next/ESC to navigate.
+    var lbCtrl = window.IllLightbox.create({
+      ariaLabel: "Full size image",
+      itemsLength: imgs.length,
+      onRender: function (ctx) {
+        var im = imgs[ctx.index];
+        ctx.imgEl.src = lightboxSrc(im);
+        ctx.imgEl.alt = im.alt || "";
+      },
+    });
+    root.appendChild(lbCtrl.lb);
+    imgs.forEach(function (im, index) {
+      im.addEventListener("click", function () {
+        lbCtrl.open(index);
+      });
+      im.setAttribute("tabindex", "0");
+      im.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          lbCtrl.open(index);
+        }
+      });
+    });
 
     waitImages().then(function () {
       apply();
