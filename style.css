@@ -218,6 +218,15 @@ small, .text-muted, .muted {
   color: #fff; background: #111 center/cover no-repeat;
 }
 
+/* Subtitle under page title: match navbar (Roboto, caps, tracking) */
+.page-header .page-header-tagline {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  font-size: 0.78rem;
+}
+
 .card.h-100 { transition: box-shadow .25s ease; }
 .card.h-100:hover { box-shadow: 0 .5rem 1.25rem rgba(0,0,0,.12); }
 .card-img-top.project-thumb { object-fit: cover; height: 220px; }
@@ -231,4 +240,180 @@ footer ul a { text-transform: uppercase; }
   height: 260px;          
   object-fit: cover;  
   display: block;
+}
+
+/* Art 75 project statements: space between paragraphs (Word-style) */
+.art75-statement > p.sub {
+  margin-bottom: 1.25rem;
+}
+.art75-statement > p.sub:last-child {
+  margin-bottom: 0;
+}
+
+/* Illustration: tight masonry + lightbox */
+.ill-masonry-preview {
+  column-count: 2;
+  column-gap: 8px;
+}
+@media (min-width: 768px) {
+  .ill-masonry-preview {
+    column-count: 3;
+  }
+}
+.ill-masonry-preview .ill-tile-link {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 8px;
+  line-height: 0;
+}
+.ill-masonry-preview .ill-tile-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+}
+.ill-masonry-preview .ill-tile-link:hover img {
+  opacity: 0.92;
+}
+
+.ill-page-root {
+  min-height: 40vh;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ill-masonry {
+  column-count: 2;
+  column-gap: 8px;
+}
+@media (min-width: 576px) {
+  .ill-masonry {
+    column-count: 3;
+  }
+}
+@media (min-width: 992px) {
+  .ill-masonry {
+    column-count: 4;
+  }
+}
+.ill-masonry .ill-tile-btn {
+  display: block;
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+}
+.ill-masonry .ill-tile-btn img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+}
+.ill-masonry .ill-tile-btn:hover img {
+  opacity: 0.92;
+}
+
+html.ill-lightbox-open {
+  overflow: hidden;
+}
+
+.ill-lightbox[hidden] {
+  display: none !important;
+}
+
+.ill-lightbox:not([hidden]) {
+  display: flex !important;
+}
+
+.ill-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 2.5rem 2rem;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.ill-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(18, 18, 18, 0.82);
+  cursor: pointer;
+}
+
+.ill-lightbox-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.85rem;
+  z-index: 3;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  background: transparent;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #444;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.ill-lightbox-close:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.ill-lightbox-prev,
+.ill-lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 2.75rem;
+  height: 3.5rem;
+  border: 0;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+.ill-lightbox-prev {
+  left: 0.5rem;
+}
+.ill-lightbox-next {
+  right: 0.5rem;
+}
+.ill-lightbox-prev:hover,
+.ill-lightbox-next:hover {
+  background: #fff;
+  color: #000;
+}
+
+.ill-lightbox-frame {
+  position: relative;
+  z-index: 2;
+  max-width: min(92vw, 1400px);
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  cursor: default;
+}
+
+.ill-lightbox-img {
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
 }
