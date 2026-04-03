@@ -68,17 +68,51 @@
     </div>
   </header>
 
-  <main class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-8 text-center">
-        <img src="./glitchart00.jpg" class="img-fluid rounded mb-4" alt="Glitch Art 00">
-		<img src="./glitchart03.jpg" class="img-fluid rounded mb-4" alt="Glitch Art 03">
-        <img src="./glitchart04.jpg" class="img-fluid rounded mb-4" alt="Glitch Art 04">
-        <img src="./glitchart01.jpg" class="img-fluid rounded mb-4" alt="Glitch Art 01">
-        <img src="./glitchart02.jpg" class="img-fluid rounded mb-4" alt="Glitch Art 02">
-		<p> B.1 Original Image by @ninomaeinanis (Hololive)</p>
+  <main>
+    <section class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+          <div
+            class="project-strip-carousel"
+            style="--project-strip-h: 260px;"
+            data-start-index="1"
+            aria-label="Glitch art carousel"
+          >
+            <div class="project-strip-viewport" role="region" aria-label="Glitch art images">
+              <div class="project-strip-track">
+                <img src="./glitchart00.jpg" alt="Glitch Art 00" loading="lazy" decoding="async">
+                <img src="./glitchart03.jpg" alt="Glitch Art 03" loading="lazy" decoding="async">
+                <img src="./glitchart04.jpg" alt="Glitch Art 04" loading="lazy" decoding="async">
+                <img src="./glitchart01.jpg" alt="Glitch Art 01" loading="lazy" decoding="async">
+                <img src="./glitchart02.jpg" alt="Glitch Art 02" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <div class="project-strip-nav">
+              <button type="button" class="project-strip-prev" aria-label="Previous image">&#8592;</button>
+              <button type="button" class="project-strip-next" aria-label="Next image">&#8594;</button>
+            </div>
+          </div>
+          <p class="small text-muted mt-3 mb-0 text-start">B.1 Original Image by @ninomaeinanis (Hololive)</p>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section id="statement" class="py-5 bg-light border-top">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8">
+            <h2 class="h4 mb-3">Statement</h2>
+            <div class="text-start">
+              <p class="mb-3">This series explores identity through distortion.</p>
+              <p class="mb-3">Using glitch techniques such as data bending and data moshing, I altered these images to reflect the instability between a persona and a real self. The work is based on the VTuber Pomu Rainpuff from Nijisanji, where the line between character and person is often unclear.</p>
+              <p class="mb-3">I wanted to push these images beyond illustration. Glitching them allowed me to break and reconstruct them in a way that feels more honest to that experience.</p>
+              <p class="mb-3">The distortions are intentional. They represent fragmentation and the tension between how someone is perceived and who they actually are.</p>
+              <p class="mb-0">This work is both a technical experiment and a way for me to explore how identity exists within digital spaces.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="py-5 bg-white border-top">
@@ -109,6 +143,8 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/ill-lightbox.js"></script>
+  <script src="../personal/projects-carousel.js"></script>
   <script src="../js/social-footer.js" defer></script>
 </body>
 </html>

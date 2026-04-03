@@ -540,3 +540,141 @@ html.ill-lightbox-open {
   outline: 2px solid #0d6efd;
   outline-offset: 2px;
 }
+
+/* Art 74 pages: stacked images that open lightbox (no carousel) */
+[data-ill-click-gallery] > img {
+  cursor: pointer;
+}
+
+[data-ill-click-gallery] > img:hover {
+  opacity: 0.94;
+}
+
+/* Blog index list meta */
+.blog-list-meta {
+  color: #3c3332;
+  font-size: 0.875rem;
+}
+
+.blog-list-meta-date {
+  font-weight: 700;
+}
+
+/* Blog entry pages: back link + content column */
+.blog-entry-main {
+  max-width: 720px;
+}
+
+.blog-back-bar {
+  margin-bottom: 0.75rem;
+}
+
+/* Align with horizontal padding inside .blog-post-wrap */
+.blog-back-bar--inset {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .blog-back-bar--inset {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.blog-back-link {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #3c3332;
+  text-decoration: none;
+}
+
+.blog-back-link:hover {
+  color: #2e2827;
+  text-decoration: underline;
+}
+
+.blog-back-link:focus-visible {
+  outline: 2px solid #3c3332;
+  outline-offset: 2px;
+}
+
+/* Blog inline photos: keep figures readable without dominating the column */
+.blog-post-figure-compact {
+  text-align: center;
+  margin: 1.25rem 0;
+}
+
+.blog-post-figure-compact img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: auto;
+  max-height: 380px;
+  height: auto;
+  object-fit: contain;
+}
+
+.blog-post-figure-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1.25rem 0;
+}
+
+.blog-post-figure-row .blog-post-figure-compact {
+  flex: 1 1 220px;
+  max-width: min(100%, 380px);
+  margin: 0;
+}
+
+.blog-post-figure-row .blog-post-figure-compact img {
+  max-height: 320px;
+}
+
+/* Blog post body + mail CTA */
+.blog-post-wrap {
+  max-width: 720px;
+  background-color: #f7f6f2;
+  padding: 2.5rem 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .blog-post-wrap {
+    padding: 2.75rem 2.5rem;
+  }
+}
+
+.blog-mailto-btn-wrap {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.blog-mailto-btn {
+  display: inline-block;
+  padding: 1rem 2.75rem;
+  background-color: #3c3332;
+  color: #fff !important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-decoration: none !important;
+  border-radius: 0;
+  transition: background-color 0.15s ease;
+}
+
+.blog-mailto-btn:hover {
+  background-color: #2e2827;
+  color: #fff !important;
+}
+
+.blog-mailto-btn:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}

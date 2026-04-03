@@ -10,7 +10,7 @@ window.ILL_GALLERY_ITEMS = [
   { file: '04.jpg', alt: 'Illustration 4' },
   { file: '05.jpg', alt: 'Illustration 5' },
   { file: '06.jpg', alt: 'Illustration 6' },
-  { file: '07.png', alt: 'Illustration 7' },
+  { file: '07.PNG', alt: 'Illustration 7' },
   { file: '08.png', alt: 'Illustration 8' },
   { file: '09.png', alt: 'Illustration 9' },
   { file: '10.jpg', alt: 'Illustration 10' },

@@ -71,37 +71,90 @@
   <main class="container my-5">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-8 text-center">
-        <img src="./3d01.jpg" class="img-fluid rounded mb-4" alt="3D Works 1">
-		 <img src="./g1.jpg" class="img-fluid rounded mb-4" alt="3D Works 1">
-		 <p class="mb-0">
-            You can download the Gawr Gura STL here:
-            <a href="./gura.stl" download>Gura STL</a>
-          </p>
+        <div data-ill-click-gallery aria-label="3D Works and Gura print">
+          <img src="./3d01.jpg" class="img-fluid rounded mb-4" alt="3D Works render" loading="lazy" decoding="async">
+          <img src="./g1.jpg" class="img-fluid rounded mb-0" alt="Gawr Gura 3D print" loading="lazy" decoding="async">
+        </div>
+        <div id="statement" class="mt-5 pt-4 border-top text-start">
+          <h2 class="h4 mb-3">Statement</h2>
+          <p class="mb-3">Using my Minecraft sculpture of Gawr Gura, I converted the build into a 3D model and prepared it for printing. What originally existed as a digital structure within a game was transformed into a tangible object.</p>
+          <p class="mb-3">The process highlights how digital creations are not limited to screens. They can be extracted, reinterpreted, and materialized through different tools and workflows.</p>
+          <p class="mb-3">Although the original sculpture exists in a virtual space, the final print gives it a physical presence. This shift changes how the work is experienced, moving from something interactive and temporary to something fixed and real.</p>
+          <p class="mb-0">This piece reflects my interest in how digital mediums can extend beyond their intended use, and how virtual forms can take on new meaning when translated into the physical world.</p>
+        </div>
+        <p class="mb-0 mt-4">
+          You can download the Gawr Gura STL here:
+          <a href="./gura.stl" download>Gura STL</a>
+        </p>
       </div>
     </div>
   </main>
   
-  <main class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-8 text-center">
-			<p class="lead">Learning Blender Project</p>
-			<p class="sub">a short 3D project for Art 2 </p>
-        <img src="./1.png" class="img-fluid rounded mb-4" alt="Glitch Art 00">
-		<img src="./2.png" class="img-fluid rounded mb-4" alt="Glitch Art 03">
-        <img src="./3.png" class="img-fluid rounded mb-4" alt="Glitch Art 04">
-        <img src="./4.png" class="img-fluid rounded mb-4" alt="Glitch Art 01">
-        <img src="./5.png" class="img-fluid rounded mb-4" alt="Glitch Art 02">
-		 <img src="./6.png" class="img-fluid rounded mb-4" alt="Glitch Art 00">
-		<img src="./7.png" class="img-fluid rounded mb-4" alt="Glitch Art 03">
-        <img src="./8.png" class="img-fluid rounded mb-4" alt="Glitch Art 04">
-        <img src="./9.png" class="img-fluid rounded mb-4" alt="Glitch Art 01">
-        <img src="./10.png" class="img-fluid rounded mb-4" alt="Glitch Art 02">
-		<img src="./11.png" class="img-fluid rounded mb-4" alt="Glitch Art 01">
-        <img src="./12.png" class="img-fluid rounded mb-4" alt="Glitch Art 02">
-		<img src="./c1.jpg" class="img-fluid rounded mb-4" alt="Glitch Art 02">
+  <section id="learning-blender-art2" class="py-5 bg-white border-top">
+    <div class="container">
+      <h2 class="h4 mb-1">Learning Blender Project</h2>
+      <p class="text-muted mb-4">A short 3D project for Art 2</p>
+
+      <div
+        class="project-strip-carousel"
+        style="--project-strip-h: 260px;"
+        data-start-index="1"
+        aria-label="Learning Blender Art 2 carousel"
+      >
+        <div class="project-strip-viewport" role="region" aria-label="Learning Blender Art 2 images">
+          <div class="project-strip-track">
+            <img src="./1.png" alt="Learning Blender Art 2, image 1" loading="lazy" decoding="async">
+            <img src="./2.png" alt="Learning Blender Art 2, image 2" loading="lazy" decoding="async">
+            <img src="./3.png" alt="Learning Blender Art 2, image 3" loading="lazy" decoding="async">
+            <img src="./4.png" alt="Learning Blender Art 2, image 4" loading="lazy" decoding="async">
+            <img src="./5.png" alt="Learning Blender Art 2, image 5" loading="lazy" decoding="async">
+            <img src="./6.png" alt="Learning Blender Art 2, image 6" loading="lazy" decoding="async">
+            <img src="./7.png" alt="Learning Blender Art 2, image 7" loading="lazy" decoding="async">
+            <img src="./8.png" alt="Learning Blender Art 2, image 8" loading="lazy" decoding="async">
+            <img src="./9.png" alt="Learning Blender Art 2, image 9" loading="lazy" decoding="async">
+            <img src="./10.png" alt="Learning Blender Art 2, image 10" loading="lazy" decoding="async">
+            <img src="./11.png" alt="Learning Blender Art 2, image 11" loading="lazy" decoding="async">
+            <img src="./12.png" alt="Learning Blender Art 2, image 12" loading="lazy" decoding="async">
+            <img src="./c1.jpg" alt="Learning Blender Art 2, image 13" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="project-strip-nav">
+          <button type="button" class="project-strip-prev" aria-label="Previous image">&#8592;</button>
+          <button type="button" class="project-strip-next" aria-label="Next image">&#8594;</button>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-between mt-3 mb-2">
+        <button
+          class="btn btn-sm btn-outline-secondary"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#blender-art2-gallery-collapse"
+          aria-expanded="false"
+          aria-controls="blender-art2-gallery-collapse"
+        >
+          Toggle gallery
+        </button>
+      </div>
+      <div id="blender-art2-gallery-collapse" class="collapse">
+        <div id="blender-art2-masonry-root" class="ill-masonry my-3">
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 1"><img src="./1.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 2"><img src="./2.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 3"><img src="./3.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 4"><img src="./4.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 5"><img src="./5.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 6"><img src="./6.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 7"><img src="./7.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 8"><img src="./8.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 9"><img src="./9.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 10"><img src="./10.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 11"><img src="./11.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 12"><img src="./12.png" alt="" loading="lazy" decoding="async"></button>
+          <button type="button" class="ill-tile-btn" aria-label="View larger: Blender Art 2 image 13"><img src="./c1.jpg" alt="" loading="lazy" decoding="async"></button>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
 
   <footer class="py-5 bg-white border-top">
     <div class="container text-center">
@@ -131,6 +184,10 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/ill-lightbox.js"></script>
+  <script src="../js/ill-click-gallery.js"></script>
+  <script src="../personal/projects-carousel.js"></script>
+  <script src="art2-masonry-lightbox.js"></script>
   <script src="../js/social-footer.js" defer></script>
 </body>
 </html>
